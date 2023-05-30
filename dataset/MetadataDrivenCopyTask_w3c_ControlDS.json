@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_w3c_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_w3c_20230529"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_ROCK"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

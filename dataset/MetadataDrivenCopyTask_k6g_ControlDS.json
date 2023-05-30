@@ -1,0 +1,20 @@
+{
+	"name": "MetadataDrivenCopyTask_k6g_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_k6g_20230525"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MainControlTable_k6g"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

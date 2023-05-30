@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_6kx_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_6kx_20230529"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_ROCKSTAR"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

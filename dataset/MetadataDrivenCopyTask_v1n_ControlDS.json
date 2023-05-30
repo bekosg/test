@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_v1n_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_v1n_20230523"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_George"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

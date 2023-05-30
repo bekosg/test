@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_gcl_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_gcl_20230522"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_gcl"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

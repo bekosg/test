@@ -1,0 +1,27 @@
+{
+	"name": "MetadataDrivenCopyTask_k6g_SourceDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srm365dev",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_entityName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_k6g_20230525"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": {
+				"value": "@dataset().cw_entityName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

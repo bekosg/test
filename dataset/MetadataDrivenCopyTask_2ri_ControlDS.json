@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_2ri_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_2ri_20230523"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_2ri"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

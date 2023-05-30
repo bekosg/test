@@ -1,0 +1,9 @@
+{
+	"name": "BekosG-df",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "55df66bf-54f7-435c-8c6b-1920a72f67fc",
+		"tenantId": "76f9037d-0b73-4a41-bcac-cbccd1f1c412"
+	}
+}

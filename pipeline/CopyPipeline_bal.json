@@ -1,0 +1,486 @@
+{
+	"name": "CopyPipeline_bal",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_bal",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "ecdc_country"
+					},
+					{
+						"name": "Destination",
+						"value": ".ecdc_country"
+					},
+					{
+						"name": "LastExecution",
+						"value": "2023-05-15"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsSource",
+						"query": {
+							"value": "<fetch>\n<entity name=\"ecdc_country\">\n<filter type=\"or\">\n<condition attribute=\"createdon\" operator=\"on-or-after\" value=\"2023-03-22\" />\n<condition attribute=\"modifiedon\" operator=\"on-or-after\" value=\"2023-03-24\" />\n</filter>\n</entity>\n</fetch>",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"ecdc_countryid"
+							]
+						},
+						"sqlWriterUseTableLock": true,
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "createdby",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "createdby",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "createdbyname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "createdbyname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdbyyominame",
+									"type": "String"
+								},
+								"sink": {
+									"name": "createdbyyominame",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdon",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "createdon",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "createdonbehalfby",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "createdonbehalfby",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "createdonbehalfbyname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "createdonbehalfbyname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdonbehalfbyyominame",
+									"type": "String"
+								},
+								"sink": {
+									"name": "createdonbehalfbyyominame",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_countrycode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ecdc_countrycode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_countryid",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "ecdc_countryid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_eea",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_eea",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_efta",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_efta",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_euenlargementpolicycountrycategory",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_euenlargementpolicycountrycategory",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_eumember",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_eumember",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_eumembership",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ecdc_eumembership",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_haspostalcodes",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_haspostalcodes",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ecdc_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_officiallanguages",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ecdc_officiallanguages",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_relatedtomedipietmodule",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_relatedtomedipietmodule",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ecdc_westernbalkanscountry",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "ecdc_westernbalkanscountry",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "importsequencenumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "importsequencenumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedby",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "modifiedby",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedbyname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedbyname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedbyyominame",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedbyyominame",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedon",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "modifiedon",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedonbehalfby",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "modifiedonbehalfby",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedonbehalfbyname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedonbehalfbyname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedonbehalfbyyominame",
+									"type": "String"
+								},
+								"sink": {
+									"name": "modifiedonbehalfbyyominame",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "overriddencreatedon",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "overriddencreatedon",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ownerid",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "ownerid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "owneridname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "owneridname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owneridtype",
+									"type": "String"
+								},
+								"sink": {
+									"name": "owneridtype",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owneridyominame",
+									"type": "String"
+								},
+								"sink": {
+									"name": "owneridyominame",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningbusinessunit",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "owningbusinessunit",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "owningbusinessunitname",
+									"type": "String"
+								},
+								"sink": {
+									"name": "owningbusinessunitname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningteam",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "owningteam",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "owninguser",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "owninguser",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "statecode",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "statuscode",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "statuscode",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "timezoneruleversionnumber",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "timezoneruleversionnumber",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "utcconversiontimezonecode",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "utcconversiontimezonecode",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "versionnumber",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "versionnumber",
+									"type": "Int64"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_bal",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_bal",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-05-16T10:04:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

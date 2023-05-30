@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_bal",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srm365dev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": "ecdc_country"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

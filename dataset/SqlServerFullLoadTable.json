@@ -1,0 +1,30 @@
+{
+	"name": "SqlServerFullLoadTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ecdc_ecdc_permissiondefinition_ecdc_securityid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ecdc_permissiondefinitionid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ecdc_securitygroupid",
+				"type": "uniqueidentifier"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ecdc_ecdc_permissiondefinition_ecdc_security"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

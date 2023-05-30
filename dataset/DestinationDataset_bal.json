@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_bal",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "ecdc_country"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

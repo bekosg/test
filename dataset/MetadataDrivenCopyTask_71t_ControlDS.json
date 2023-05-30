@@ -1,0 +1,19 @@
+{
+	"name": "MetadataDrivenCopyTask_71t_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_71t_20230523"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_Stella"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

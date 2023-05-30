@@ -1,0 +1,17 @@
+{
+	"name": "Trigger_gcl",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 24,
+				"startTime": "2023-06-01T15:23:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
