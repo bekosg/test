@@ -1342,7 +1342,7 @@
 														"typeProperties": {
 															"storedProcedureName": "[[dbo].[sp_Delete_Table_Data]",
 															"storedProcedureParameters": {
-																"tablename": {
+																"Table_Name": {
 																	"value": {
 																		"value": "@json(item().SinkObjectSettings).table",
 																		"type": "Expression"
