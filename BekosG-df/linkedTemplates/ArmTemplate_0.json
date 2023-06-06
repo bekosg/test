@@ -11,7 +11,15 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'srm365dev'"
 		},
+		"srmecdc_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'srmecdc'"
+		},
 		"srm365dev_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "GiorgosA@ecdc365.onmicrosoft.com"
+		},
+		"srmecdc_properties_typeProperties_username": {
 			"type": "string",
 			"defaultValue": "GiorgosA@ecdc365.onmicrosoft.com"
 		}
@@ -35,6 +43,27 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('srm365dev_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/srmecdc')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Production srm environment",
+				"annotations": [],
+				"type": "Dynamics",
+				"typeProperties": {
+					"deploymentType": "Online",
+					"serviceUri": "https://srmecdc.crm4.dynamics.com",
+					"authenticationType": "Office365",
+					"username": "[parameters('srmecdc_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('srmecdc_password')]"
 					}
 				}
 			},
@@ -526,43 +555,34 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_bal')]",
+			"name": "[concat(parameters('factoryName'), '/SRMProdCopyTask_97a_SourceDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "srm365dev",
+					"referenceName": "srmecdc",
 					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_entityName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "SRMProdCopyTask_97a_20230606"
 				},
 				"annotations": [],
 				"type": "DynamicsEntity",
 				"schema": [],
 				"typeProperties": {
-					"entityName": "ecdc_country"
+					"entityName": {
+						"value": "@dataset().cw_entityName",
+						"type": "Expression"
+					}
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/srm365dev')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SrmCountry')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "srm365dev",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DynamicsEntity",
-				"schema": [],
-				"typeProperties": {
-					"entityName": "ecdc_country"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/srm365dev')]"
+				"[concat(variables('factoryId'), '/linkedServices/srmecdc')]"
 			]
 		}
 	]

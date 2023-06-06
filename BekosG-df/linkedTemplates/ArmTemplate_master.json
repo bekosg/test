@@ -15,11 +15,19 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'srm365dev'"
 		},
+		"srmecdc_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'srmecdc'"
+		},
 		"ECDCFAT_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://srminternal.europa.local/ECDCFAT"
 		},
 		"srm365dev_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "GiorgosA@ecdc365.onmicrosoft.com"
+		},
+		"srmecdc_properties_typeProperties_username": {
 			"type": "string",
 			"defaultValue": "GiorgosA@ecdc365.onmicrosoft.com"
 		},
@@ -53,8 +61,14 @@
 					"srm365dev_password": {
 						"value": "[parameters('srm365dev_password')]"
 					},
+					"srmecdc_password": {
+						"value": "[parameters('srmecdc_password')]"
+					},
 					"srm365dev_properties_typeProperties_username": {
 						"value": "[parameters('srm365dev_properties_typeProperties_username')]"
+					},
+					"srmecdc_properties_typeProperties_username": {
+						"value": "[parameters('srmecdc_properties_typeProperties_username')]"
 					}
 				}
 			},
@@ -104,6 +118,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'BekosG-df_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "BekosG-df_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BekosG-df_ArmTemplate_2')]"
 			]
 		}
 	]

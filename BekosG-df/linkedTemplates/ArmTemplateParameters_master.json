@@ -11,10 +11,16 @@
 		"srm365dev_password": {
 			"value": ""
 		},
+		"srmecdc_password": {
+			"value": ""
+		},
 		"ECDCFAT_properties_typeProperties_url": {
 			"value": "https://srminternal.europa.local/ECDCFAT"
 		},
 		"srm365dev_properties_typeProperties_username": {
+			"value": "GiorgosA@ecdc365.onmicrosoft.com"
+		},
+		"srmecdc_properties_typeProperties_username": {
 			"value": "GiorgosA@ecdc365.onmicrosoft.com"
 		},
 		"containerUri": {
