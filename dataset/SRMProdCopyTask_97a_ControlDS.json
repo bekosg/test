@@ -1,0 +1,18 @@
+{
+	"name": "SRMProdCopyTask_97a_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SRMProdCopyTask_97a_20230606"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_TestProd"
+		}
+	}
+}
