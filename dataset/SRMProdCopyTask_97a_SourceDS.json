@@ -1,0 +1,26 @@
+{
+	"name": "SRMProdCopyTask_97a_SourceDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srmecdc",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_entityName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "SRMProdCopyTask_97a_20230606"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": {
+				"value": "@dataset().cw_entityName",
+				"type": "Expression"
+			}
+		}
+	}
+}
