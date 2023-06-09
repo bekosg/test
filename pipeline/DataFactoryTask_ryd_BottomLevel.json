@@ -34,7 +34,14 @@
 												"name": "FullLoadOneObject",
 												"description": "Take a full snapshot on this object and copy it to the destination",
 												"type": "Copy",
-												"dependsOn": [],
+												"dependsOn": [
+													{
+														"activity": "Stored procedure1",
+														"dependencyConditions": [
+															"Completed"
+														]
+													}
+												],
 												"policy": {
 													"timeout": "0.12:00:00",
 													"retry": 0,
@@ -118,16 +125,10 @@
 														}
 													}
 												]
-											}
-										]
-									},
-									{
-										"value": "DeltaLoad",
-										"activities": [
+											},
 											{
-												"name": "GetMaxWatermarkValue",
-												"description": "Query the source object to get the max value from watermark column",
-												"type": "Lookup",
+												"name": "Stored procedure1",
+												"type": "SqlServerStoredProcedure",
 												"dependsOn": [],
 												"policy": {
 													"timeout": "0.12:00:00",
@@ -138,37 +139,29 @@
 												},
 												"userProperties": [],
 												"typeProperties": {
-													"source": {
-														"type": "DynamicsSource",
-														"query": {
-															"value": "select max(@{json(item().DataLoadingBehaviorSettings).watermarkColumnName}) as CurrentMaxWaterMarkColumnValue from @{json(item().SourceObjectSettings).entityName}",
-															"type": "Expression"
-														}
-													},
-													"dataset": {
-														"referenceName": "DataFactoryTask_ryd_SourceDS",
-														"type": "DatasetReference",
-														"parameters": {
-															"cw_entityName": {
-																"value": "@json(item().SourceObjectSettings).entityName",
-																"type": "Expression"
-															}
+													"storedProcedureName": "[dbo].[sp_Delete_Table_Data]",
+													"storedProcedureParameters": {
+														"Table_Name": {
+															"value": "@json(item().SinkObjectSettings).table",
+															"type": "String"
 														}
 													}
+												},
+												"linkedServiceName": {
+													"referenceName": "ECDC_SQL08",
+													"type": "LinkedServiceReference"
 												}
-											},
+											}
+										]
+									},
+									{
+										"value": "DeltaLoad",
+										"activities": [
 											{
 												"name": "DeltaLoadOneObject",
 												"description": "Copy the changed data only from last time via comparing the value in watermark column to identify changes.",
 												"type": "Copy",
-												"dependsOn": [
-													{
-														"activity": "GetMaxWatermarkValue",
-														"dependencyConditions": [
-															"Succeeded"
-														]
-													}
-												],
+												"dependsOn": [],
 												"policy": {
 													"timeout": "0.12:00:00",
 													"retry": 0,
@@ -190,7 +183,7 @@
 													"source": {
 														"type": "DynamicsSource",
 														"query": {
-															"value": "<fetch>\n<entity name=\"@{json(item().SourceObjectSettings).entityName}\">\n<all-attributes />\n<filter type=\"and\">\n<condition attribute =\"@{json(item().DataLoadingBehaviorSettings).watermarkColumnName}\" operator=\"between\">\n<value>undefined</value>\n<value>undefined</value>\n</condition>\n</filter>\n</entity>\n</fetch>\n",
+															"value": "<fetch>\n<entity name=\"@{json(item().SourceObjectSettings).entityName}\">\n<all-attributes />\n<filter type=\"and\">\n<condition attribute =\"@{json(item().DataLoadingBehaviorSettings).watermarkColumnName}\" operator=\"on-or-after\" value=\"@{json(item().DataLoadingBehaviorSettings).watermarkColumnStartValue}\"/>\n</filter>\n</entity>\n</fetch>",
 															"type": "Expression"
 														}
 													},
@@ -284,7 +277,7 @@
 														},
 														"watermarkColumnStartValue": {
 															"value": {
-																"value": "@activity('GetMaxWatermarkValue').output.firstRow.CurrentMaxWaterMarkColumnValue",
+																"value": "@utcnow()",
 																"type": "Expression"
 															},
 															"type": "String"
