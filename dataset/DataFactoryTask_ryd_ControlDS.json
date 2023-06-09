@@ -1,0 +1,18 @@
+{
+	"name": "DataFactoryTask_ryd_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DataFactoryTask_ryd_20230609"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_DF"
+		}
+	}
+}
