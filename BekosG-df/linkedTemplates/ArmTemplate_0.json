@@ -121,6 +121,37 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DataFactoryTask_ryd_SourceDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "srmecdc",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_entityName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "DataFactoryTask_ryd_20230609"
+				},
+				"annotations": [],
+				"type": "DynamicsEntity",
+				"schema": [],
+				"typeProperties": {
+					"entityName": {
+						"value": "@dataset().cw_entityName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/srmecdc')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_2ri_SourceDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -552,37 +583,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/srm365dev')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SRMProdCopyTask_97a_SourceDS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "srmecdc",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"cw_entityName": {
-						"type": "String"
-					}
-				},
-				"folder": {
-					"name": "SRMProdCopyTask_97a_20230606"
-				},
-				"annotations": [],
-				"type": "DynamicsEntity",
-				"schema": [],
-				"typeProperties": {
-					"entityName": {
-						"value": "@dataset().cw_entityName",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/srmecdc')]"
 			]
 		}
 	]
