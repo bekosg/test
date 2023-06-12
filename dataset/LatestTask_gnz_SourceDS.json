@@ -1,0 +1,26 @@
+{
+	"name": "LatestTask_gnz_SourceDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srmecdc",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_entityName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "LatestTask_gnz_20230612"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": {
+				"value": "@dataset().cw_entityName",
+				"type": "Expression"
+			}
+		}
+	}
+}
