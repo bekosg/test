@@ -1,0 +1,18 @@
+{
+	"name": "LatestTask_gnz_ControlDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ECDC_SQL08",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "LatestTask_gnz_20230612"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "MainControlTable_Latest"
+		}
+	}
+}
