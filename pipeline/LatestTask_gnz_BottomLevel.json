@@ -38,7 +38,7 @@
 													{
 														"activity": "Stored procedure1",
 														"dependencyConditions": [
-															"Completed"
+															"Succeeded"
 														]
 													}
 												],
@@ -142,7 +142,10 @@
 													"storedProcedureName": "[dbo].[sp_Delete_Table_Data]",
 													"storedProcedureParameters": {
 														"Table_Name": {
-															"value": "@json(item().SinkObjectSettings).table",
+															"value": {
+																"value": "@json(item().SinkObjectSettings).table",
+																"type": "Expression"
+															},
 															"type": "String"
 														}
 													}
