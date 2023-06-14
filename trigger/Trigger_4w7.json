@@ -1,0 +1,25 @@
+{
+	"name": "Trigger_4w7",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MetadataDrivenCopyTask_4w7_TopLevel",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2023-06-14T09:14:00Z",
+				"endTime": "2023-06-15T09:14:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
