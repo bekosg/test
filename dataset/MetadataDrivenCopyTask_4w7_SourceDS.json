@@ -1,0 +1,26 @@
+{
+	"name": "MetadataDrivenCopyTask_4w7_SourceDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srmecdc",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_entityName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "MetadataDrivenCopyTask_4w7_20230614"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": {
+				"value": "@dataset().cw_entityName",
+				"type": "Expression"
+			}
+		}
+	}
+}
