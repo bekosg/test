@@ -21,6 +21,35 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_w3c_SourceDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "srm365dev",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_entityName": {
+						"type": "String"
+					}
+				},
+				"folder": {
+					"name": "MetadataDrivenCopyTask_w3c_20230529"
+				},
+				"annotations": [],
+				"type": "DynamicsEntity",
+				"schema": [],
+				"typeProperties": {
+					"entityName": {
+						"value": "@dataset().cw_entityName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_ypv_SourceDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -427,7 +456,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_6kx_ControlDS')]",
+			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_4w7_ControlDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -436,13 +465,13 @@
 					"type": "LinkedServiceReference"
 				},
 				"folder": {
-					"name": "MetadataDrivenCopyTask_6kx_20230529"
+					"name": "MetadataDrivenCopyTask_4w7_20230614"
 				},
 				"annotations": [],
 				"type": "SqlServerTable",
 				"schema": [],
 				"typeProperties": {
-					"table": "MainControlTable_ROCKSTAR"
+					"table": "MainControlTable_GEORGE"
 				}
 			},
 			"dependsOn": [
@@ -450,7 +479,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_6kx_DestinationDS')]",
+			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_4w7_DestinationDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -467,7 +496,7 @@
 					}
 				},
 				"folder": {
-					"name": "MetadataDrivenCopyTask_6kx_20230529"
+					"name": "MetadataDrivenCopyTask_4w7_20230614"
 				},
 				"annotations": [],
 				"type": "SqlServerTable",
@@ -488,7 +517,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_71t_ControlDS')]",
+			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_6kx_ControlDS')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -497,44 +526,13 @@
 					"type": "LinkedServiceReference"
 				},
 				"folder": {
-					"name": "MetadataDrivenCopyTask_71t_20230523"
+					"name": "MetadataDrivenCopyTask_6kx_20230529"
 				},
 				"annotations": [],
 				"type": "SqlServerTable",
 				"schema": [],
 				"typeProperties": {
-					"table": "MainControlTable_Stella"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ECDC_SQL08')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/MetadataDrivenCopyTask_71t_DestinationDS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ECDC_SQL08",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"cw_table": {
-						"type": "String"
-					}
-				},
-				"folder": {
-					"name": "MetadataDrivenCopyTask_71t_20230523"
-				},
-				"annotations": [],
-				"type": "SqlServerTable",
-				"schema": [],
-				"typeProperties": {
-					"table": {
-						"value": "@dataset().cw_table",
-						"type": "Expression"
-					}
+					"table": "MainControlTable_ROCKSTAR"
 				}
 			},
 			"dependsOn": [

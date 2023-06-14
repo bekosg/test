@@ -145,6 +145,26 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BekosG-df_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "BekosG-df_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
 					},
 					"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
 						"value": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity')]"
@@ -158,7 +178,7 @@
 				}
 			},
 			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'BekosG-df_ArmTemplate_2')]"
+				"[resourceId('Microsoft.Resources/deployments', 'BekosG-df_ArmTemplate_3')]"
 			]
 		}
 	]
