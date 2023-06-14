@@ -31,6 +31,18 @@
 			"type": "string",
 			"defaultValue": "GiorgosA@ecdc365.onmicrosoft.com"
 		},
+		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+			"type": "int",
+			"defaultValue": 5000
+		},
+		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+			"type": "int",
+			"defaultValue": 20
+		},
+		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName": {
+			"type": "string",
+			"defaultValue": "MainControlTable_Latest"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -133,6 +145,15 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+						"value": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity')]"
+					},
+					"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+						"value": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfConcurrentTasks')]"
+					},
+					"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName": {
+						"value": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName')]"
 					}
 				}
 			},

@@ -6,6 +6,18 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "BekosG-df"
+		},
+		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+			"type": "int",
+			"defaultValue": 5000
+		},
+		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+			"type": "int",
+			"defaultValue": 20
+		},
+		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName": {
+			"type": "string",
+			"defaultValue": "MainControlTable_Latest"
 		}
 	},
 	"variables": {
@@ -3260,6 +3272,41 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SRMProdCopyTask_97a_ControlDS')]",
 				"[concat(variables('factoryId'), '/pipelines/SRMProdCopyTask_97a_MiddleLevel')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ProdTestTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "LatestTask_gnz_TopLevel",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"MaxNumberOfObjectsReturnedFromLookupActivity": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity')]",
+							"MaxNumberOfConcurrentTasks": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MaxNumberOfConcurrentTasks')]",
+							"MainControlTableName": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 8,
+						"startTime": "2023-06-14T08:35:00Z",
+						"endTime": "2023-06-14T12:29:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/LatestTask_gnz_TopLevel')]"
 			]
 		}
 	]
