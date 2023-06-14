@@ -1,0 +1,30 @@
+{
+	"name": "ProdTestTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "LatestTask_gnz_TopLevel",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"MaxNumberOfObjectsReturnedFromLookupActivity": 5000,
+					"MaxNumberOfConcurrentTasks": 20,
+					"MainControlTableName": "MainControlTable_Latest"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 8,
+				"startTime": "2023-06-14T08:35:00Z",
+				"endTime": "2023-06-14T12:29:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
