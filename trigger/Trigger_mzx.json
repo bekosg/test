@@ -2,12 +2,17 @@
 	"name": "Trigger_mzx",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
 					"referenceName": "FullLoadCopyTask_mzx_TopLevel",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"MaxNumberOfObjectsReturnedFromLookupActivity": 5000,
+					"MaxNumberOfConcurrentTasks": 20,
+					"MainControlTableName": "MainControlTable_FullLoad"
 				}
 			}
 		],
@@ -15,8 +20,9 @@
 		"typeProperties": {
 			"recurrence": {
 				"frequency": "Hour",
-				"interval": 24,
-				"startTime": "2023-06-15T14:55:00Z",
+				"interval": 4,
+				"startTime": "2023-06-15T14:59:00Z",
+				"endTime": "2023-06-17T15:50:31Z",
 				"timeZone": "UTC"
 			}
 		}
