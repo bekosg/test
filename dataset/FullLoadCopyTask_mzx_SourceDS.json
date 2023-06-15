@@ -1,0 +1,26 @@
+{
+	"name": "FullLoadCopyTask_mzx_SourceDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srmecdc",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_entityName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "FullLoadCopyTask_mzx_20230615"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": {
+				"value": "@dataset().cw_entityName",
+				"type": "Expression"
+			}
+		}
+	}
+}
