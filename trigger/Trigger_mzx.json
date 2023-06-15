@@ -1,0 +1,24 @@
+{
+	"name": "Trigger_mzx",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "FullLoadCopyTask_mzx_TopLevel",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 24,
+				"startTime": "2023-06-15T14:55:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
