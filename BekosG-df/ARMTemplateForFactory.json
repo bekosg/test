@@ -42,6 +42,18 @@
 		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName": {
 			"type": "string",
 			"defaultValue": "MainControlTable_Latest"
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+			"type": "int",
+			"defaultValue": 5000
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+			"type": "int",
+			"defaultValue": 20
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MainControlTableName": {
+			"type": "string",
+			"defaultValue": "MainControlTable_FullLoad"
 		}
 	},
 	"variables": {
@@ -6526,22 +6538,27 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
 							"referenceName": "FullLoadCopyTask_mzx_TopLevel",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"MaxNumberOfObjectsReturnedFromLookupActivity": "[parameters('Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity')]",
+							"MaxNumberOfConcurrentTasks": "[parameters('Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfConcurrentTasks')]",
+							"MainControlTableName": "[parameters('Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MainControlTableName')]"
+						}
 					}
 				],
 				"type": "ScheduleTrigger",
 				"typeProperties": {
 					"recurrence": {
 						"frequency": "Hour",
-						"interval": 24,
-						"startTime": "2023-06-15T14:55:00Z",
+						"interval": 4,
+						"startTime": "2023-06-15T14:59:00Z",
+						"endTime": "2023-06-17T15:50:31Z",
 						"timeZone": "UTC"
 					}
 				}

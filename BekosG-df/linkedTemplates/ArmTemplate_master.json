@@ -43,6 +43,18 @@
 			"type": "string",
 			"defaultValue": "MainControlTable_Latest"
 		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+			"type": "int",
+			"defaultValue": 5000
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+			"type": "int",
+			"defaultValue": 20
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MainControlTableName": {
+			"type": "string",
+			"defaultValue": "MainControlTable_FullLoad"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -174,6 +186,15 @@
 					},
 					"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName": {
 						"value": "[parameters('ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName')]"
+					},
+					"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+						"value": "[parameters('Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity')]"
+					},
+					"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+						"value": "[parameters('Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfConcurrentTasks')]"
+					},
+					"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MainControlTableName": {
+						"value": "[parameters('Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MainControlTableName')]"
 					}
 				}
 			},

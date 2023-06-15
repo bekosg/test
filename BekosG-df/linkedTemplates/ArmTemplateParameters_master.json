@@ -32,6 +32,15 @@
 		"ProdTestTrigger_properties_LatestTask_gnz_TopLevel_parameters_MainControlTableName": {
 			"value": "MainControlTable_Latest"
 		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfObjectsReturnedFromLookupActivity": {
+			"value": 5000
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MaxNumberOfConcurrentTasks": {
+			"value": 20
+		},
+		"Trigger_mzx_properties_FullLoadCopyTask_mzx_TopLevel_parameters_MainControlTableName": {
+			"value": "MainControlTable_FullLoad"
+		},
 		"containerUri": {
 			"value": ""
 		},
