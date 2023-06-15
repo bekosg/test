@@ -34,7 +34,14 @@
 												"name": "FullLoadOneObject",
 												"description": "Take a full snapshot on this object and copy it to the destination",
 												"type": "Copy",
-												"dependsOn": [],
+												"dependsOn": [
+													{
+														"activity": "Stored procedure1",
+														"dependencyConditions": [
+															"Succeeded"
+														]
+													}
+												],
 												"policy": {
 													"timeout": "0.12:00:00",
 													"retry": 0,
@@ -102,6 +109,32 @@
 														}
 													}
 												]
+											},
+											{
+												"name": "Stored procedure1",
+												"type": "SqlServerStoredProcedure",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"storedProcedureName": "[dbo].[sp_Delete_Table_Data]",
+													"storedProcedureParameters": {
+														"Table_Name": {
+															"value": "@json(item().SinkObjectSettings).table",
+															"type": "String"
+														}
+													}
+												},
+												"linkedServiceName": {
+													"referenceName": "ECDC_SQL08",
+													"type": "LinkedServiceReference"
+												}
 											}
 										]
 									},
